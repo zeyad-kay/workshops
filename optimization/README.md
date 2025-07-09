@@ -54,7 +54,7 @@ $$x_{t+1} = x_t - \mu (g_t + \gamma g_t)$$
 
 The most prominent problem with Gradient Descent is the constant learning rate for all variables. If the learning rate is too small, the movement in the search space will be small and the search will take a long time. If the learning rate is too large, the search may bounce around the search space and skip over the optima. For this reason AdaGrad (AdaGrad) was developed to accelerate to make the optimization process less sensitive to the learning rate.
 
-AdaGrad sets a learning rate for each variable allowing variables with small gradient to have a small learning rate and variables with large gradient to have a large learning rate.
+AdaGrad sets a learning rate for each variable allowing variables with small gradient variance to have a large learning rate and variables with large gradient variance to have a small learning rate.
 
 $$g_t = \nabla f_t$$
 $$G_t = \sum_{i=1}^{t} {g_i}^2$$
@@ -87,8 +87,8 @@ $$x_{t+1} = x_t - \delta_x$$
 Adaptive Moment Estimation (Adam) combines RMSProp and AdaDelta. It stores both an exponentially decaying squared gradient like RMSProp and Adadelta, but also an exponentially decaying gradient like momentum.
 
 $$g_t = \nabla f_t$$
-$$C_t = \gamma C_{t-1} + (1 - \gamma) {g_t}$$
-$$G_t = \gamma G_{t-1} + (1 - \gamma) {g_t}^2$$
+$$C_t = \beta_1 C_{t-1} + (1 - \beta_1) {g_t}$$
+$$G_t = \beta_2 G_{t-1} + (1 - \beta_2) {g_t}^2$$
 
 $$\hat{C_t} = \frac{C_t}{1 - \beta_1^t}$$
 $$\hat{G_t} = \frac{G_t}{1 - \beta_2^t}$$
